@@ -8,20 +8,20 @@
 <body>
 
     <!-- SINGLE FILE -->
-    <form action="/upload" enctype="multipart/form-data" method="POST">
+    <form action="/api/upload" enctype="multipart/form-data" method="POST">
         <input type="file" name="avatar" />
         <input type="submit" value="Upload a file" />
     </form>
 
     <!-- MULTIPLE FILES -->
-    <form action="/upload" enctype="multipart/form-data" method="POST">
+    <form action="/api/upload/2" enctype="multipart/form-data" method="POST">
         Select files: <input type="file" name="avatar" multiple>
         <input type="submit" value="Upload your files" />
     </form>
 
     
      <!-- PHOTO -->
-    <form action="/upload/photo" enctype="multipart/form-data" method="POST"> 
+    <form action="api/upload/photo" enctype="multipart/form-data" method="POST"> 
         <input type="file" name="avatar" accept="image/*" />
         <input type="submit" value="Upload Photo"/>
     </form>

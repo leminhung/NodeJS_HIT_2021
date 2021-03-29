@@ -11,6 +11,4 @@ module.exports = (app) => {
     //Handle error response 
     app.use(errorHandle)
 
-
-    //TEST
 }

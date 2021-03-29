@@ -11,10 +11,13 @@ connectDB()
 
 
 const app = express()
-app.use(express.static(path.join(__dirname, './upload')))
 const port = 3000
 
 
+// app.post('/upload', (req, res) => {
+//   return res.json({ status: 'OK'})
+// })
+app.use(express.static('./view'));
 app.use(morgan('combined'))
 
 const router = require('./routers')

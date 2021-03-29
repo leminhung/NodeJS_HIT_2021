@@ -1,25 +1,22 @@
-// call all the required packages
 const express = require('express')
-const bodyParser= require('body-parser')
+const bodyParser = require('body-parser')
 const multer = require('multer');
-const path = require("path");
 const router = express.Router();
 const uploadController = require("../controllers/uploadController");
+const uploadMiddleware = require('../middlewares/uploadMiddleware')
+
+router
+    .route('/')
+    .post(uploadMiddleware.upload.single('avatar'), uploadController.upload);
+router
+    .route('/2')
+    .post(uploadMiddleware.upload2.array('avatar', 12), uploadController.upload);
+router
+    .route('/photo')
+    .post(uploadMiddleware.uploadImg.array('avatar', 12), uploadController.upload);
+
+module.exports = router
 
 
-//SET STORAGE
-var storage = multer.diskStorage({
-    destination: function(req, file, cb) {
-        cb(null, path.join(__dirname, '../upload'))
-    },
-    filename: function(req, file, cb) {
-        cb(null, file.originalname)
-    }
-})
-
-var upload = multer({ storage: storage })
-  
-router.route("/")
-    .post(upload.single('avatar'), uploadController.upload)
-    .post(upload.array('avatar', 12), uploadController.upload)
-module.exports = router;
+//Lưu ý những tên thì phải trùng với tên của form trong index.html
+//và đường dẫn cũng phải trùng với thuộc tính action trong index.html
